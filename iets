@@ -1,3 +1,19 @@
-iiuiuiu
-iuiu
-iuiu
+echo "<pre>" ;
+    echo $response;
+echo "</pre>";
+
+
+    foreach ($data as $ingredient ) {
+        $sql = "INSERT INTO ingredients (idIngredient, strIngredient, strDescription, strType) VALUES (:idingredient, :ingredient, :description, :type)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute($data);
+        
+        
+        $stmt = $pdo->prepare("INSERT INTO users (name, surname, age) VALUES (?,?,?)");
+try {
+    $pdo->beginTransaction();
+    foreach ($data as $row)
+    {
+        $stmt->execute($row);
+    }
+    $pdo->commit();
